@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+#complete{ /*complete all tasks font-style*/
+  margin-left:75px;
+  color:#888;
+}
+#Clear{   /*clear completed font-style*/
+  margin-left:53%;
+  color:#888;
+}
+body{ /*complete background colour*/
+  background-color:#888;
+}
+#main{ /*background colour to white*/
+  height:100%;
+  width:100%;
+  Background-color:white;
+  border-radius:5px;
+}
+ul li { /*list items style */
+  cursor:pointer;
+  position: relative;
+  padding:12px 8px 12px 40px;
+   /* background: #eee;  */
+  font-size:18px;
+  width:67%;
+}
+.del {/*delete icon*/
+  content:'\u00D7';
+  color:white;
+  position:absolute;
+  right:0;
+  top:0;
+  padding:12px 16px 12px 16px;
+}
+.del:hover { 
+  content:'\u00D7';
+  display:block;
+  color:black;
+  border-radius:50%;
+  border:2px solid black;
+}
+.header {  /*header box styling*/
+  padding:30px 40px;
+  color:white;
+  text-align:center;
+}
+.header:after {
+  content:"";
+  display:table;
+  clear: both; 
+}
+input { /*input style*/
+  margin:0;
+  border:none;
+  border-radius:5px;
+  background-color:#eee;
+  width:75%;
+  height:50px;
+  padding:10px;
+  float:left;
+  font-size:30px;
+}
+.add{ /*add button*/
+  padding:10px;
+  width:10%;
+  background: #d9d9d9;
+  color: #555;
+  float:left;
+  text-align:center;
+  font-size:16px;
+  cursor:pointer;
+  border-radius:5px;
+  margin:15px;
+}
+.add:hover {
+  background-color: #bbb;
+}
+#count{ /*items left count style*/
+  margin-left:45px;
+}
+#task{ 
+  color:#888;
+}
+#all{
+  margin-left:57%;
+}
+#com{
+  color:#888;
+}
+</style>
+<head>
+</head>
+<body>
+  <div id="main">
+    <div id="myDIV" class="header">
+        <input type="text" id="input" placeholder="Type Your todo list">
+        <span onclick="newElement()" class="add">add</span>
+      </div>
+      <div><span id="complete">Complete all tasks</span>
+            <span id="Clear">Clear Completed</span>
+      </div>
+      <hr>
+      <ul type="circle" id="list">
+        <li>Learn how to use Vue.js</li>
+        <li>Drink coffee</li>
+        <li>Wakeup at 5 a.m</li>
+      </ul>
+      <hr>
+      <div>
+      <span id="count">3 </span><span id="task">tasks left</span>
+      <span id="all">All</span>
+      <span id="com">Uncomplete Complete</span>
+    </div>
+  </div>
+<script type="text/javascript">
+var l=document.getElementsByTagName("li");
+var i;
+r=3;
+for (i=0;i<l.length;i++) {
+  var s=document.createElement("SPAN");
+  var t=document.createTextNode("\u00D7");
+  s.className="del";
+  s.appendChild(t);
+  l[i].appendChild(s);
+}
+function newElement() {     // Adding new item
+  var li=document.createElement("li");
+  var iv=document.getElementById("input").value;
+  var t=document.createTextNode(iv);
+  li.appendChild(t);
+  if(iv==='') {
+    alert("You must write something!");
+  } 
+  else{
+    document.getElementById("list").appendChild(li);
+    r++;
+  }
+  document.getElementById("input").value = "";
+  var s=document.createElement("SPAN");
+  var t=document.createTextNode("\u00D7");
+  s.className = "del";
+  s.appendChild(t);
+  li.appendChild(s);
+  for(i=0;i<c.length;i++) {
+    c[i].onclick=function() {
+      var div=this.parentElement;
+      div.style.display="none";
+      r--;
+      var cc=document.getElementById('count');
+  cc.innerText=r+' ';
+    }
+  }
+  var cc=document.getElementById('count');
+  cc.innerText=r+' ';
+}
+
+var c=document.getElementsByClassName("del");
+var i;
+for (i=0;i<c.length;i++) {
+  c[i].onclick=function() {  //deleting list item
+    var div=this.parentElement;
+    div.style.display="none";
+    r--;
+    var cc=document.getElementById('count');
+  cc.innerText=r+' ';
+  }
+}
+</script>
+</body>
+</html>
